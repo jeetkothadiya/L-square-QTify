@@ -12,7 +12,9 @@ function App() {
     <div className="App">
       <Navbar />
       <HeroSection />
+      <br />
       <Section title="Top Albums" />
+      <br />
       <Section title="New Albums" />
     </div>
   );

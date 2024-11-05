@@ -1,7 +1,12 @@
+:root {
+  --color-black: #121212;
+  --color-green: #34C94B;
+  --color-white: #FFFFFF;
+}
+
 .navbar {
-    background-color: var(--color-primary);
+    background-color: var(--color-green);
     height: 74px;
-    width: 90vw;
     padding: 0px 32px;
     display: flex;
     align-items: center;
