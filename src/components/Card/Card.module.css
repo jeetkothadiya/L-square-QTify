@@ -1,0 +1,35 @@
+.cardContainer {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .albumImage {
+    width: 100%;
+    height: auto; /* Adjusted for responsive sizing */
+    aspect-ratio: 1; /* Ensures a square aspect ratio for the image */
+    object-fit: cover;
+  }
+  
+  .cardContent {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .albumTitle {
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0;
+    text-align: center;
+  }
+  
+  .followChip {
+    margin-top: 8px;
+  }
+  

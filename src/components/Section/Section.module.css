@@ -1,0 +1,29 @@
+.section {
+    padding: 16px;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px; /* Space below header */
+}
+
+.card-container {
+    overflow: hidden; /* Prevent overflow when cards are in grid */
+    transition: all 0.3s; /* Smooth transition for expansion */
+}
+
+.arrow-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px; /* Space below arrows */
+}
+
+.arrow-container svg {
+    cursor: pointer;
+}
+
+.card-container.expanded {
+    display: block; /* Full grid display */
+}

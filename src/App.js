@@ -4,13 +4,16 @@ import HeroSection from './components/Hero/Hero';
 import Logo from './components/Logo/Logo';
 import Search from './components/Search/Search';
 import './App.css';
+import Section from './components/Section/Section';
 
 
 function App() {
   return (
-    <div>
+    <div className="App">
       <Navbar />
       <HeroSection />
+      <Section title="Top Albums" />
+      <Section title="New Albums" />
     </div>
   );
 }
