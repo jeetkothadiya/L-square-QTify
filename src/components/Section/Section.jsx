@@ -20,24 +20,6 @@ const Section = () => {
       }
     };
 
-    fetchAlbums();
-  }, []);
-
-  const handleShowAll = () => {
-    setShowAll(!showAll);
-    setVisibleCards(showAll ? 8 : albums.length); // Show either 3 or all cards
-  };
-
-  const handleLeftArrowClick = () => {
-    // Implement left navigation logic
-    // You can use state to manage which cards to show based on the current index
-  };
-
-  const handleRightArrowClick = () => {
-    // Implement right navigation logic
-    // Similar to left arrow click
-  };
-
   return (
     <div className="section">
       <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
