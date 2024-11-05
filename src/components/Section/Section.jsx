@@ -8,7 +8,8 @@ import Card from '../Card/Card';
 const Section = () => {
   const [albums, setAlbums] = useState([]);
   const [showAll, setShowAll] = useState(false);
-  const [visibleCards, setVisibleCards] = useState(8); // Number of cards to show
+  const [visibleCards, setVisibleCards] = useState(8);
+  const [currentStartIndex, setCurrentStartIndex] = useState(0);
 
   useEffect(() => {
     const fetchAlbums = async () => {
@@ -20,6 +21,27 @@ const Section = () => {
       }
     };
 
+    fetchAlbums();
+  }, []);
+
+  const handleShowAll = () => {
+    setShowAll(!showAll);
+    setVisibleCards(showAll ? 8 : albums.length);
+    setCurrentStartIndex(0); // Reset to the start when toggling show all
+  };
+
+  const handleLeftArrowClick = () => {
+    if (currentStartIndex > 0) {
+      setCurrentStartIndex(currentStartIndex - visibleCards);
+    }
+  };
+
+  const handleRightArrowClick = () => {
+    if (currentStartIndex + visibleCards < albums.length) {
+      setCurrentStartIndex(currentStartIndex + visibleCards);
+    }
+  };
+
   return (
     <div className="section">
       <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
@@ -30,17 +52,23 @@ const Section = () => {
       </Box>
       {!showAll && (
         <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
-          <ArrowBack onClick={handleLeftArrowClick} style={{ cursor: 'pointer' }} />
-          <ArrowForward onClick={handleRightArrowClick} style={{ cursor: 'pointer' }} />
+          <ArrowBack 
+            onClick={handleLeftArrowClick} 
+            style={{ cursor: 'pointer', visibility: currentStartIndex === 0 ? 'hidden' : 'visible' }} 
+          />
+          <ArrowForward 
+            onClick={handleRightArrowClick} 
+            style={{ cursor: 'pointer', visibility: currentStartIndex + visibleCards >= albums.length ? 'hidden' : 'visible' }} 
+          />
         </Box>
       )}
       <Box 
         display={showAll ? 'grid' : 'flex'} 
         flexWrap="wrap" 
-        gridTemplateColumns={showAll ? 'repeat(3, 1fr)' : `repeat(${visibleCards}, 1fr)`} 
+        sx={{ gridTemplateColumns: showAll ? 'repeat(3, 1fr)' : `repeat(${visibleCards}, 1fr)` }} 
         gap={2}
       >
-        {albums.slice(0, visibleCards).map(album => (
+        {albums.slice(currentStartIndex, currentStartIndex + visibleCards).map(album => (
           <Card
             key={album.id}
             image={album.image}

@@ -3,7 +3,7 @@
   }
   
   .card {
-    max-width: 200px; /* Set a max width for cards */
-    flex: 1 0 30%; /* Allow for flexible growth */
+    max-width: 200px;
+    flex: 1 0 30%;
   }
   
